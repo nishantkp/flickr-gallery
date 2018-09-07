@@ -17,6 +17,7 @@ public class RetrofitClient {
     public static Retrofit getClient() {
         if (sRetrofit == null) {
             sRetrofit = new Retrofit.Builder()
+                    .addConverterFactory(FlickrConverter.create())
                     .baseUrl(BASE_URL)
                     .build();
         }
