@@ -9,9 +9,7 @@ import android.support.annotation.NonNull;
 
 import com.android.nishant.flickr101.data.callback.OnTaskCompletion;
 import com.android.nishant.flickr101.data.retrofit.ApiUtils;
-import com.android.nishant.flickr101.ui.model.Photo;
-
-import java.util.List;
+import com.android.nishant.flickr101.ui.model.FlickrObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,14 +30,20 @@ public final class FlickrUseCase {
                                       @NonNull final OnTaskCompletion callback) {
         ApiUtils.getFlickerService()
                 .getDataFromQuery(userQuery)
-                .enqueue(new Callback<List<Photo>>() {
+                .enqueue(new Callback<FlickrObject>() {
                     @Override
-                    public void onResponse(@NonNull Call<List<Photo>> call, @NonNull Response<List<Photo>> response) {
-                        callback.onData(response.body());
+                    public void onResponse(@NonNull Call<FlickrObject> call,
+                                           @NonNull Response<FlickrObject> response) {
+                        FlickrObject object = response.body();
+                        if (object != null) {
+                            callback.onData(object.getPhotos().getPhoto());
+                        } else {
+                            callback.onError("No response from Flickr endpoint");
+                        }
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<List<Photo>> call, @NonNull Throwable t) {
+                    public void onFailure(@NonNull Call<FlickrObject> call, @NonNull Throwable t) {
                         callback.onError(t.getMessage());
                     }
                 });

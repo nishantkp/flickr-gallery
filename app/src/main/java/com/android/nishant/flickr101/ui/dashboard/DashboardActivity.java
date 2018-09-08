@@ -7,6 +7,7 @@ package com.android.nishant.flickr101.ui.dashboard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.android.nishant.flickr101.R;
 import com.android.nishant.flickr101.data.manager.DataManager;
@@ -27,6 +28,9 @@ public class DashboardActivity
 
         mPresenter = new DashboardPresenter(DataManager.getInstance());
         mPresenter.attachView(this);
+
+        // Fake query
+        mPresenter.getPhotos("animal");
     }
 
     @Override
@@ -41,11 +45,13 @@ public class DashboardActivity
 
     @Override
     public void onData(List<Photo> photos) {
-
+        for (Photo photo : photos) {
+            Log.i("Data", photo.getTitle());
+        }
     }
 
     @Override
     public void onError(String message) {
-
+        Log.i("Error", message);
     }
 }
