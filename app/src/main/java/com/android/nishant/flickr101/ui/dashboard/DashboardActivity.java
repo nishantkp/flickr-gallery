@@ -8,8 +8,7 @@ package com.android.nishant.flickr101.ui.dashboard;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 import android.view.View;
 
@@ -41,15 +40,10 @@ public class DashboardActivity
         mBinding.dashboardRv.setAdapter(mPhotoAdapter);
 
         // set layout manager on recycler view
-        mBinding.dashboardRv.setLayoutManager(new LinearLayoutManager(this));
-
-        // Add divider between two items
-        DividerItemDecoration itemDecor =
-                new DividerItemDecoration(mBinding.dashboardRv.getContext(), DividerItemDecoration.VERTICAL);
-        mBinding.dashboardRv.addItemDecoration(itemDecor);
+        mBinding.dashboardRv.setLayoutManager(new GridLayoutManager(this, 2));
 
         // Fake query
-        mPresenter.getPhotos("bird");
+        mPresenter.getPhotos("animal");
     }
 
     @Override

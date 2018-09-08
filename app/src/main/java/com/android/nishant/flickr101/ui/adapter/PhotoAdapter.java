@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.nishant.flickr101.R;
-import com.android.nishant.flickr101.databinding.PhotoListItemBinding;
+import com.android.nishant.flickr101.databinding.PhotoGridItemBinding;
 import com.android.nishant.flickr101.ui.dashboard.DashboardActivity;
 import com.android.nishant.flickr101.ui.model.PhotoDetail;
 import com.squareup.picasso.Picasso;
@@ -45,8 +45,8 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
     @Override
     public PhotoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.photo_list_item, parent, false);
-        return new PhotoViewHolder(PhotoListItemBinding.bind(view));
+                .inflate(R.layout.photo_grid_item, parent, false);
+        return new PhotoViewHolder(PhotoGridItemBinding.bind(view));
     }
 
     @Override
@@ -64,16 +64,16 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
      */
     class PhotoViewHolder extends RecyclerView.ViewHolder {
 
-        private PhotoListItemBinding mBinding;
+        private PhotoGridItemBinding mBinding;
 
-        PhotoViewHolder(PhotoListItemBinding binding) {
+        PhotoViewHolder(PhotoGridItemBinding binding) {
             super(binding.getRoot());
             mBinding = binding;
         }
 
         void bind(PhotoDetail photoDetail) {
-            mBinding.photoListItemTitle.setText(photoDetail.getTitle());
-            Picasso.get().load(photoDetail.getUrl()).into(mBinding.photoListItemImage);
+            mBinding.photoGridTitle.setText(photoDetail.getTitle());
+            Picasso.get().load(photoDetail.getUrl()).into(mBinding.photoGridImage);
         }
     }
 }
