@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.android.nishant.flickr101.R;
 import com.android.nishant.flickr101.data.manager.DataManager;
-import com.android.nishant.flickr101.ui.model.Photo;
+import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class DashboardActivity
         mPresenter.attachView(this);
 
         // Fake query
-        mPresenter.getPhotos("animal");
+        mPresenter.getPhotos("bird");
     }
 
     @Override
@@ -44,9 +44,9 @@ public class DashboardActivity
     }
 
     @Override
-    public void onData(List<Photo> photos) {
-        for (Photo photo : photos) {
-            Log.i("Data", photo.getTitle());
+    public void onData(List<PhotoDetail> photoDetails) {
+        for (PhotoDetail photo : photoDetails) {
+            Log.i("Data", "\nTitle : " + photo.getTitle() + " Url : " + photo.getUrl());
         }
     }
 

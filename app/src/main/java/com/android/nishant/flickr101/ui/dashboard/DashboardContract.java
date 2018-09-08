@@ -6,7 +6,7 @@
 package com.android.nishant.flickr101.ui.dashboard;
 
 import com.android.nishant.flickr101.base.MvpView;
-import com.android.nishant.flickr101.ui.model.Photo;
+import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface DashboardContract {
 
         void cancelProgressDialog();
 
-        void onData(List<Photo> photos);
+        void onData(List<PhotoDetail> photoDetails);
 
         void onError(String message);
     }

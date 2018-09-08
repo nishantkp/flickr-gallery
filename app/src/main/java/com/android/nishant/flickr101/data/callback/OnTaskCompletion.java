@@ -5,7 +5,7 @@
 
 package com.android.nishant.flickr101.data.callback;
 
-import com.android.nishant.flickr101.ui.model.Photo;
+import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * Task completion callback for data and error
  */
 public interface OnTaskCompletion {
-    void onData(List<Photo> data);
+    void onData(List<PhotoDetail> data);
 
     void onError(String message);
 }

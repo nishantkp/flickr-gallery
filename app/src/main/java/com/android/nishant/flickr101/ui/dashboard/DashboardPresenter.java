@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import com.android.nishant.flickr101.base.BasePresenter;
 import com.android.nishant.flickr101.data.callback.OnTaskCompletion;
 import com.android.nishant.flickr101.data.manager.DataManager;
-import com.android.nishant.flickr101.ui.model.Photo;
+import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class DashboardPresenter
 
         mDataManager.getUserSearchResponse(userQuery, new OnTaskCompletion() {
             @Override
-            public void onData(List<Photo> data) {
+            public void onData(List<PhotoDetail> data) {
                 getView().cancelProgressDialog();
                 getView().onData(data);
             }
