@@ -5,4 +5,5 @@
 
 <resources>
     <string name="app_name">Flickr101</string>
+    <string name="image_search_label">Image search</string>
 </resources>

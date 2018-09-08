@@ -37,6 +37,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
      */
     public void updateDataSet(List<PhotoDetail> newData) {
         if (newData == null || newData.isEmpty()) return;
+        mPhotoDetailList.clear();
         mPhotoDetailList.addAll(newData);
         notifyDataSetChanged();
     }
