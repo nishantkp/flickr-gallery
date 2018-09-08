@@ -13,6 +13,6 @@ public interface DashboardContract {
     }
 
     interface Presenter {
-
+        void getPhotos(String userQuery);
     }
 }
