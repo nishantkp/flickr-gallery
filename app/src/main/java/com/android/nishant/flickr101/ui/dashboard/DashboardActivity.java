@@ -5,10 +5,12 @@
 
 package com.android.nishant.flickr101.ui.dashboard;
 
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.android.nishant.flickr101.databinding.ActivityDashboardBinding;
 import com.android.nishant.flickr101.R;
 import com.android.nishant.flickr101.data.manager.DataManager;
 import com.android.nishant.flickr101.ui.model.PhotoDetail;
@@ -20,11 +22,12 @@ public class DashboardActivity
         implements DashboardContract.View {
 
     private DashboardPresenter mPresenter;
+    private ActivityDashboardBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
 
         mPresenter = new DashboardPresenter(DataManager.getInstance());
         mPresenter.attachView(this);
