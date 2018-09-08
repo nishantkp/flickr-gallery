@@ -7,7 +7,7 @@ package com.android.nishant.flickr101.data.retrofit;
 
 import com.android.nishant.flickr101.ui.model.FlickrObject;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -23,5 +23,5 @@ public interface FlickrService {
      * @return FlickrObject which contains a list of photos based on user search query
      */
     @GET("?api_key=949e98778755d1982f537d56236bbb42&method=flickr.photos.search&format=json")
-    Call<FlickrObject> getDataFromQuery(@Query("text") String searchQuery);
+    Observable<FlickrObject> getDataFromQuery(@Query("text") String searchQuery);
 }

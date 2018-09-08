@@ -16,9 +16,10 @@ import com.android.nishant.flickr101.ui.model.PhotoDetail;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public final class FlickrUseCase {
 
@@ -35,21 +36,27 @@ public final class FlickrUseCase {
                                       @NonNull final OnTaskCompletion callback) {
         ApiUtils.getFlickerService()
                 .getDataFromQuery(userQuery)
-                .enqueue(new Callback<FlickrObject>() {
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<FlickrObject>() {
                     @Override
-                    public void onResponse(@NonNull Call<FlickrObject> call,
-                                           @NonNull Response<FlickrObject> response) {
-                        FlickrObject object = response.body();
-                        if (object != null) {
-                            callback.onData(getPhotoDetailList(object.getPhotos().getPhoto()));
-                        } else {
-                            callback.onError("No response from Flickr endpoint");
-                        }
+                    public void onSubscribe(Disposable d) {
+                        // Empty for now
                     }
 
                     @Override
-                    public void onFailure(@NonNull Call<FlickrObject> call, @NonNull Throwable t) {
-                        callback.onError(t.getMessage());
+                    public void onNext(FlickrObject flickrObject) {
+                        callback.onData(getPhotoDetailList(flickrObject.getPhotos().getPhoto()));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onError(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        // Empty for now
                     }
                 });
     }
