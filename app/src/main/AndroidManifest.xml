@@ -23,7 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.dashboard.DashboardActivity"></activity>
+        <activity
+            android:name=".ui.dashboard.DashboardActivity"
+            android:theme="@style/DashboardTheme" />
     </application>
 
 </manifest>

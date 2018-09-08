@@ -13,4 +13,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Dashboard theme -->
+    <style name="DashboardTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/dashboardColorPrimary</item>
+        <item name="colorPrimaryDark">@color/dashboardColorPrimaryDark</item>
+        <item name="colorAccent">@color/dashboardColorAccent</item>
+    </style>
 </resources>
