@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.View;
 
 import com.android.nishant.flickr101.databinding.ActivityDashboardBinding;
 import com.android.nishant.flickr101.R;
@@ -53,12 +54,12 @@ public class DashboardActivity
 
     @Override
     public void showProgressDialog() {
-
+        mBinding.dashboardProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void cancelProgressDialog() {
-
+        mBinding.dashboardProgressBar.setVisibility(View.GONE);
     }
 
     @Override

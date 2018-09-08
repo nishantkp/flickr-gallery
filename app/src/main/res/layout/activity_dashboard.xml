@@ -34,5 +34,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dashboard_query_text_view" />
+
+        <ProgressBar
+            android:id="@+id/dashboard_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="@+id/dashboard_rv"
+            app:layout_constraintEnd_toEndOf="@+id/dashboard_rv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_query_text_view" />
     </android.support.constraint.ConstraintLayout>
 </layout>
