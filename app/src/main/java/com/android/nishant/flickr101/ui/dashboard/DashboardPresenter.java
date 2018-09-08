@@ -5,6 +5,8 @@
 
 package com.android.nishant.flickr101.ui.dashboard;
 
+import android.text.TextUtils;
+
 import com.android.nishant.flickr101.base.BasePresenter;
 import com.android.nishant.flickr101.data.callback.OnTaskCompletion;
 import com.android.nishant.flickr101.data.manager.DataManager;
@@ -37,15 +39,23 @@ public class DashboardPresenter
 
     @Override
     public void getPhotos(String userQuery) {
+
+        // If user has entered empty string exit the method
+        if (TextUtils.isEmpty(userQuery)) return;
+
+        getView().showProgressDialog();
+
         mDataManager.getUserSearchResponse(userQuery, new OnTaskCompletion() {
             @Override
             public void onData(List<Photo> data) {
-
+                getView().cancelProgressDialog();
+                getView().onData(data);
             }
 
             @Override
             public void onError(String message) {
-
+                getView().cancelProgressDialog();
+                getView().onError(message);
             }
         });
     }
