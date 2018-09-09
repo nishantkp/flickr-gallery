@@ -5,6 +5,7 @@
 
 package com.android.nishant.flickr101.ui.dashboard;
 
+import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,12 +14,14 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.android.nishant.flickr101.databinding.ActivityDashboardBinding;
 import com.android.nishant.flickr101.R;
 import com.android.nishant.flickr101.data.manager.DataManager;
 import com.android.nishant.flickr101.ui.adapter.PhotoAdapter;
 import com.android.nishant.flickr101.ui.model.PhotoDetail;
+import com.android.nishant.flickr101.ui.model.UserSearchQuery;
 
 import java.util.List;
 
@@ -26,14 +29,21 @@ public class DashboardActivity
         extends AppCompatActivity
         implements DashboardContract.View {
 
-    private DashboardPresenter mPresenter;
+    private static DashboardPresenter mPresenter;
     private ActivityDashboardBinding mBinding;
     private PhotoAdapter mPhotoAdapter;
+
+    @BindingAdapter({"app:performSearchPerQuery"})
+    public static void searchPerQuery(EditText view, String query) {
+        mPresenter.getPhotos(query);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
+        mBinding.setQuery(new UserSearchQuery());
+
         mPhotoAdapter = new PhotoAdapter();
         mBinding.dashboardRv.setAdapter(mPhotoAdapter);
 

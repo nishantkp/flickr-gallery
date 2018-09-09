@@ -7,6 +7,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="query"
+            type="com.android.nishant.flickr101.ui.model.UserSearchQuery" />
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,9 +43,11 @@
             android:hint="@string/image_search_label"
             android:inputType="textNoSuggestions|text"
             android:padding="16dp"
+            android:text="@={query.searchQuery}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_search_title" />
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_search_title"
+            app:performSearchPerQuery="@{query.searchQuery}" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/dashboard_rv"
