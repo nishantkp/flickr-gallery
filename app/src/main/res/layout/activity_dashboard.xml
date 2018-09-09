@@ -12,20 +12,33 @@
         android:layout_height="match_parent"
         tools:context=".ui.dashboard.DashboardActivity">
 
+        <TextView
+            android:id="@+id/dashboard_search_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="@string/flickr_search_label"
+            android:textColor="@color/colorAccent"
+            android:textSize="32sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/dashboard_query_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/search_border"
             android:hint="@string/image_search_label"
-            android:inputType="textPersonName"
+            android:inputType="textNoSuggestions|text"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_search_title" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/dashboard_rv"
