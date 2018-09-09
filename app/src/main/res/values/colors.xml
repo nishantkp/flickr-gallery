@@ -12,4 +12,8 @@
     <color name="dashboardColorPrimary">#FFDE03</color>
     <color name="dashboardColorPrimaryDark">#FBC02D</color>
     <color name="dashboardColorAccent">#033FFF</color>
+
+    <!-- Text colors -->
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#afafaf</color>
 </resources>
