@@ -122,6 +122,7 @@ public final class FlickrUseCase {
                                 object.setHeight(detail.getHeight());
                                 object.setWidth(detail.getWidth());
                                 object.setByteSize(detail.getByteSize());
+                                object.setWidthByHeight(detail.getWidthByHeight());
                                 photoDetails.set(index, object);
                             }
                             Log.i("info", "\nid : " + detail.getId()
@@ -159,11 +160,13 @@ public final class FlickrUseCase {
                         String width = size.getWidth();
                         String originalUrl = size.getSource();
                         String byteSize = NetworkUtils.getByteSizeFromUrl(originalUrl);
+                        String widthByHeight = width + "W x " + height + "H";
                         emitter.onNext(
                                 new PhotoDetail(
                                         NetworkUtils.getImageIdFromFlickrUrl(originalUrl),
                                         width,
                                         height,
+                                        widthByHeight,
                                         originalUrl,
                                         byteSize));
                     }

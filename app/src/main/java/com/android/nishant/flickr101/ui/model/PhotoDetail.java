@@ -17,6 +17,7 @@ public class PhotoDetail {
     private String mHeight;
     private String mOriginalUrl;
     private String mByteSize;
+    private String mWidthByHeight;
 
     public PhotoDetail(String title, String url, String id) {
         mTitle = title;
@@ -24,10 +25,11 @@ public class PhotoDetail {
         mId = id;
     }
 
-    public PhotoDetail(String id, String width, String height, String originalUrl, String byteSize) {
+    public PhotoDetail(String id, String width, String height, String widthByHeight, String originalUrl, String byteSize) {
         mId = id;
         mWidth = width;
         mHeight = height;
+        mWidthByHeight = widthByHeight;
         mOriginalUrl = originalUrl;
         mByteSize = byteSize;
     }
@@ -91,5 +93,13 @@ public class PhotoDetail {
     @Override
     public boolean equals(Object obj) {
         return obj.equals(this.mId) || super.equals(obj);
+    }
+
+    public String getWidthByHeight() {
+        return mWidthByHeight;
+    }
+
+    public void setWidthByHeight(String widthByHeight) {
+        this.mWidthByHeight = widthByHeight;
     }
 }
