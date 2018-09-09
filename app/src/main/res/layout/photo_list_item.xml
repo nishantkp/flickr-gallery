@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/photo_list_item_image"
-            tools:text="ewirh weiur hwieuh wieur hwieur hwieur @sample/tools:date/hhmm" />
+            tools:text="ewirh wei h@sample/tools:date/hhmm" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
@@ -54,41 +54,27 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
 
-        <TextView
-            android:id="@+id/photo_list_item_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/photo_list_item_size_icon"
-            app:layout_constraintStart_toEndOf="@+id/photo_list_item_size_icon"
-            app:layout_constraintTop_toTopOf="@+id/photo_list_item_size_icon"
-            tools:text="26kb" />
-
-        <TextView
-            android:id="@+id/photo_list_item_wl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="sans-serif-light"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="12sp"
-            app:layout_constrainEnd_toEndOf="@+id/photo_list_item_size"
-            app:layout_constraintBottom_toBottomOf="@+id/photo_list_item_image_icon"
-            app:layout_constraintStart_toEndOf="@+id/photo_list_item_image_icon"
-            app:layout_constraintTop_toTopOf="@+id/photo_list_item_image_icon"
-            tools:text="200W x 1233L" />
-
         <ImageView
             android:id="@+id/photo_list_item_image_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/photo_list_item_title"
+            app:layout_constraintStart_toEndOf="@+id/photo_list_item_image"
             app:layout_constraintTop_toTopOf="@+id/guideline"
             app:srcCompat="@drawable/ic_baseline_photo_size_select_actual_24px" />
+
+        <TextView
+            android:id="@+id/photo_list_item_image_wl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/primaryTextColor"
+            app:layout_constraintBottom_toBottomOf="@+id/photo_list_item_image_icon"
+            app:layout_constraintStart_toEndOf="@+id/photo_list_item_image_icon"
+            app:layout_constraintTop_toTopOf="@+id/photo_list_item_image_icon"
+            tools:text="W x l"
+            tools:textSize="12sp" />
 
         <ImageView
             android:id="@+id/photo_list_item_size_icon"
@@ -96,9 +82,20 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/photo_list_item_wl"
+            app:layout_constraintStart_toEndOf="@+id/photo_list_item_image_wl"
             app:layout_constraintTop_toTopOf="@+id/guideline"
             app:srcCompat="@drawable/ic_baseline_storage_24px" />
 
+        <TextView
+            android:id="@+id/photo_list_item_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/photo_list_item_size_icon"
+            app:layout_constraintStart_toEndOf="@+id/photo_list_item_size_icon"
+            app:layout_constraintTop_toTopOf="@+id/photo_list_item_size_icon"
+            tools:text="12kb" />
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -5,6 +5,8 @@
 
 package com.android.nishant.flickr101.ui.model;
 
+import java.util.Objects;
+
 /**
  * POJO for photo details like title, url
  */
@@ -13,11 +15,11 @@ public class PhotoDetail {
     private String mTitle;
     private String mUrl;
     private String mId;
-    private String mWidth;
-    private String mHeight;
+    private String mWidth = "NA";
+    private String mHeight = "NA";
     private String mOriginalUrl;
-    private String mByteSize;
-    private String mWidthByHeight;
+    private String mByteSize = "NA";
+    private String mWidthByHeight = "NA";
 
     public PhotoDetail(String title, String url, String id) {
         mTitle = title;
@@ -92,7 +94,9 @@ public class PhotoDetail {
 
     @Override
     public boolean equals(Object obj) {
-        return obj.equals(this.mId) || super.equals(obj);
+        if (obj instanceof PhotoDetail)
+            return Objects.equals(((PhotoDetail) obj).getId(), this.mId);
+        return super.equals(obj);
     }
 
     public String getWidthByHeight() {

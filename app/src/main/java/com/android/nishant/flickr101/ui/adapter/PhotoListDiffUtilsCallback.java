@@ -14,7 +14,7 @@ import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
-public class PhotoListDiffUtilsCallback extends DiffUtil.Callback {
+public final class PhotoListDiffUtilsCallback extends DiffUtil.Callback {
 
     private List<PhotoDetail> mOldList;
     private List<PhotoDetail> mNewList;

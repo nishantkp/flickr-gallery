@@ -6,7 +6,6 @@
 package com.android.nishant.flickr101.data.usecase;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.android.nishant.flickr101.data.callback.OnTaskCompletion;
 import com.android.nishant.flickr101.data.retrofit.ApiUtils;
@@ -65,7 +64,7 @@ public final class FlickrUseCase {
                         photoDetails = new ArrayList<>();
                         photoDetails.addAll(details);
                         callback.onData(details);
-                        getPhotoSizes(details);
+                        getPhotoSizes(details, callback);
                     }
 
                     @Override
@@ -83,9 +82,10 @@ public final class FlickrUseCase {
     /**
      * Call this method to get size of image like width, height and actual byte size
      *
-     * @param details List of {@link PhotoDetail} objects containing photoId, title, and image url
+     * @param details  List of {@link PhotoDetail} objects containing photoId, title, and image url
+     * @param callback task completion callback for data and error
      */
-    private void getPhotoSizes(List<PhotoDetail> details) {
+    private void getPhotoSizes(List<PhotoDetail> details, @NonNull final OnTaskCompletion callback) {
         Observable.just(details).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .flatMapIterable(new Function<List<PhotoDetail>, Iterable<PhotoDetail>>() {
                     @Override
@@ -125,15 +125,16 @@ public final class FlickrUseCase {
                                 object.setWidthByHeight(detail.getWidthByHeight());
                                 photoDetails.set(index, object);
                             }
-                            Log.i("info", "\nid : " + detail.getId()
-                                    + " width: " + detail.getWidth() + " height: " + detail.getHeight()
-                                    + " original url: " + detail.getOriginalUrl());
+//                            Log.i("info", "\nid : " + detail.getId()
+//                                    + " width: " + detail.getWidth() + " height: " + detail.getHeight()
+//                                    + " original url: " + detail.getOriginalUrl());
                         }
+                        callback.onData(photoDetails);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        callback.onError(e.getMessage());
                     }
                 });
     }
