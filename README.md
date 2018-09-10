@@ -7,6 +7,14 @@ A gallary App with flicklr API
 ## Task Overview
 To design a mobile app which shows list of images from `query` entered by user.
 
+Each list item should display,
+- Image
+- Title
+- Size
+- Dimensions
+
+### Socks challange can be found [here](https://github.com/nishantkp/flickr-gallery/blob/master/problem-solution/sockProblem.java).
+
 ## Helpers :smiley:
 - MVP Architecture + DataBinding
 - DiffUtils.Callbak
@@ -31,7 +39,7 @@ for more detail, check out this Flickr [link](https://www.flickr.com/services/ap
 
 ### Teade-offs
 _Not in app at the momemnt, but can be included in future for better performancel_
-- Currenlty app fetches a bunch of data like, 100 images in a single api call. It could be improved with Endless-scrolling
+- Currenlty app fetches a bunch of data like, 30 images in a single api call. It could be improved with Endless-scrolling
 - Dependency injection can be solved with Dagger2
 - Test cases
 
