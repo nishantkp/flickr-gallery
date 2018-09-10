@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2018
   ~ File Created by nishant
   -->
@@ -9,15 +8,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FlickrActivity">
+    android:background="@color/dashboardColorPrimary"
+    tools:context=".ui.splashscreen.FlickrActivity">
+
+    <TextView
+        android:id="@+id/splash_screen_heading_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/spalash_screen_label_1"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/splash_screen_primary_heading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58000004" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="32dp"
+        android:fontFamily="cursive"
+        android:text="@string/splash_screen_label_2"
+        android:textColor="@color/dashboardColorAccent"
+        android:textSize="@dimen/splash_screen_secondary_heading"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/splash_screen_heading_1"
+        app:layout_constraintStart_toStartOf="@+id/splash_screen_heading_1"
+        app:layout_constraintTop_toBottomOf="@+id/splash_screen_heading_1" />
 
 </android.support.constraint.ConstraintLayout>

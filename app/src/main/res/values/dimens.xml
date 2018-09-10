@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2018
+  ~ File Created by nishant
+  -->
+
+<resources>
+    <dimen name="splash_screen_primary_heading">56sp</dimen>
+    <dimen name="splash_screen_secondary_heading">42sp</dimen>
+</resources>

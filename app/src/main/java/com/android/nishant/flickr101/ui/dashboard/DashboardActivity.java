@@ -5,6 +5,8 @@
 
 package com.android.nishant.flickr101.ui.dashboard;
 
+import android.content.Context;
+import android.content.Intent;
 import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
@@ -36,6 +38,16 @@ public class DashboardActivity
     @BindingAdapter({"app:performSearchPerQuery"})
     public static void searchPerQuery(EditText view, String query) {
         mPresenter.getPhotos(query);
+    }
+
+    /**
+     * Call this method to get the intent to start {@link DashboardActivity}
+     *
+     * @param context context from which we want to start {@link DashboardActivity}
+     * @return intent
+     */
+    public static Intent getStarterIntent(Context context) {
+        return new Intent(context, DashboardActivity.class);
     }
 
     @Override
