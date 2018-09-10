@@ -85,6 +85,11 @@ public class DashboardActivity
     }
 
     @Override
+    public void clearScreen() {
+        mPhotoAdapter.clearData();
+    }
+
+    @Override
     public void onData(List<PhotoDetail> photoDetails) {
         mPhotoAdapter.updateDataSet(photoDetails);
     }

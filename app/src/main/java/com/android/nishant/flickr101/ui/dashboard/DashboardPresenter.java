@@ -43,6 +43,7 @@ public class DashboardPresenter
         // If user has entered empty string exit the method
         if (TextUtils.isEmpty(userQuery)) return;
 
+        getView().clearScreen();
         getView().showProgressDialog();
 
         mDataManager.getUserSearchResponse(userQuery, new OnTaskCompletion() {

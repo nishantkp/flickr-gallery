@@ -16,6 +16,8 @@ public interface DashboardContract {
 
         void cancelProgressDialog();
 
+        void clearScreen();
+
         void onData(List<PhotoDetail> photoDetails);
 
         void onError(String message);

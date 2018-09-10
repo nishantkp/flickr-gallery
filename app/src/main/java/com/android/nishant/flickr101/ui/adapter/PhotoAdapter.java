@@ -45,6 +45,14 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         diffResult.dispatchUpdatesTo(this);
     }
 
+    /**
+     * Call this method to clear the data set
+     */
+    public void clearData() {
+        mPhotoDetailList.clear();
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public PhotoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
