@@ -1,6 +1,6 @@
-# flickr-gallary
+# flickr-gallery
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nishantkp/flickr-gallary/master/LICENSE)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nishantkp/flickr-gallery/master/LICENSE)
 
 A gallary App with flicklr API
 
