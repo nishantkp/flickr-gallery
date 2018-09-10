@@ -9,4 +9,5 @@
     <string name="flickr_search_label">Flickr Search</string>
     <string name="spalash_screen_label_1">Flickr</string>
     <string name="splash_screen_label_2">Gallery</string>
+    <string name="empty_text_view">Opps! No results found!</string>
 </resources>

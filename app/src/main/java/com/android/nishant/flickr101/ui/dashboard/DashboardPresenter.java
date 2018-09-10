@@ -50,7 +50,10 @@ public class DashboardPresenter
             @Override
             public void onData(List<PhotoDetail> data) {
                 getView().cancelProgressDialog();
-                getView().onData(data);
+                if (data.isEmpty())
+                    getView().noDataAvailable();
+                else
+                    getView().onData(data);
             }
 
             @Override

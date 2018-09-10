@@ -18,6 +18,8 @@ public interface DashboardContract {
 
         void clearScreen();
 
+        void noDataAvailable();
+
         void onData(List<PhotoDetail> photoDetails);
 
         void onError(String message);

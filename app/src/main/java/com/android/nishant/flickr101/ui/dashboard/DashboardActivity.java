@@ -70,12 +70,12 @@ public class DashboardActivity
                 new DividerItemDecoration(mBinding.dashboardRv.getContext(), DividerItemDecoration.VERTICAL);
         mBinding.dashboardRv.addItemDecoration(itemDecor);
 
-        // Fake query
-        mPresenter.getPhotos("animal");
+        noDataAvailable();
     }
 
     @Override
     public void showProgressDialog() {
+        mBinding.dashboardEmptyView.setVisibility(View.GONE);
         mBinding.dashboardProgressBar.setVisibility(View.VISIBLE);
     }
 
@@ -90,7 +90,13 @@ public class DashboardActivity
     }
 
     @Override
+    public void noDataAvailable() {
+        mBinding.dashboardEmptyView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void onData(List<PhotoDetail> photoDetails) {
+        mBinding.dashboardEmptyView.setVisibility(View.GONE);
         mPhotoAdapter.updateDataSet(photoDetails);
     }
 

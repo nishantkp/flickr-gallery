@@ -64,9 +64,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/dashboard_rv"
             app:layout_constraintEnd_toEndOf="@+id/dashboard_rv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dashboard_query_text_view" />
+            app:layout_constraintTop_toTopOf="@+id/dashboard_rv" />
+
+        <TextView
+            android:id="@+id/dashboard_empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/abril_fatface"
+            android:text="@string/empty_text_view"
+            android:textSize="@dimen/primary_text_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/dashboard_rv" />
     </android.support.constraint.ConstraintLayout>
 </layout>
