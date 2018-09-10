@@ -23,7 +23,7 @@ public interface FlickrService {
      * @param searchQuery search query given by user
      * @return FlickrObject which contains a list of photos based on user search query
      */
-    @GET("?api_key=949e98778755d1982f537d56236bbb42&method=flickr.photos.search&format=json&nojsoncallback=1")
+    @GET("?api_key=949e98778755d1982f537d56236bbb42&method=flickr.photos.search&format=json&per_page=30&nojsoncallback=1")
     Observable<FlickrObject> getDataFromQuery(@Query("text") String searchQuery);
 
     /**

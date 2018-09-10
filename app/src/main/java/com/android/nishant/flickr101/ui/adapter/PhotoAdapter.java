@@ -104,10 +104,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
         void bind(PhotoDetail photoDetail) {
             mBinding.setPhoto(photoDetail);
-//            mBinding.photoListItemTitle.setText(photoDetail.getTitle());
-//            mBinding.photoListItemSize.setText(photoDetail.getByteSize());
-//            mBinding.photoListItemImageWl.setText(photoDetail.getWidthByHeight());
-//            Picasso.get().load(photoDetail.getUrl()).into(mBinding.photoListItemImage);
         }
     }
 }
