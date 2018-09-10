@@ -10,6 +10,9 @@ import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
+/**
+ * Contract for {@link DashboardActivity} and {@link DashboardPresenter}
+ */
 public interface DashboardContract {
     interface View extends MvpView {
         void showProgressDialog();

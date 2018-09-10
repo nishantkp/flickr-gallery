@@ -8,6 +8,7 @@ package com.android.nishant.flickr101.data.usecase;
 import android.support.annotation.NonNull;
 
 import com.android.nishant.flickr101.data.callback.OnTaskCompletion;
+import com.android.nishant.flickr101.data.manager.DataManager;
 import com.android.nishant.flickr101.data.retrofit.ApiUtils;
 import com.android.nishant.flickr101.ui.model.FlickrObject;
 import com.android.nishant.flickr101.ui.model.FlickrSizeQuery;
@@ -30,6 +31,11 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * UseCase class which is used by {@link DataManager}
+ * This useCase class is used to get the data from Flickr API as per user search query
+ * like photo, title, size of photo by W*L and byte size
+ */
 public final class FlickrUseCase {
     private List<PhotoDetail> photoDetails;
 

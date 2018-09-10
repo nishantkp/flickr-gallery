@@ -14,6 +14,10 @@ import com.android.nishant.flickr101.ui.model.PhotoDetail;
 
 import java.util.List;
 
+/**
+ * DiffUtils class which calculates the difference between old list and new list
+ * and sends bundle of data to {@link PhotoAdapter} to update only specific views
+ */
 public final class PhotoListDiffUtilsCallback extends DiffUtil.Callback {
 
     private List<PhotoDetail> mOldList;

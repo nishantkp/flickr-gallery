@@ -26,6 +26,9 @@ import com.android.nishant.flickr101.ui.model.UserSearchQuery;
 
 import java.util.List;
 
+/**
+ * Activity responsible for displaying list of photos
+ */
 public class DashboardActivity
         extends AppCompatActivity
         implements DashboardContract.View {
