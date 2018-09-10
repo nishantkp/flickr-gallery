@@ -20,16 +20,22 @@ _Flickr endpoint for image search,_
 _method,_
 <br>`flickr.photos.search`</br>
 _Query parameters_
-<br>`format=jsonl`</br> `nojsoncallback=1 text={USER_SEARCH_QUERY}`
+<br>`format=json`</br> `nojsoncallback=1 text={USER_SEARCH_QUERY}`
 
 _Size of images is retrieved from,_
 _method,_
 <br>`method=flickr.photos.getSizes`</br>
 
-for more detail, check out this Flickr [link](https://www.flickr.com/services/api/).l
+for more detail, check out this Flickr [link](https://www.flickr.com/services/api/).
 
 ### Teade-offs
 _Not in app at the momemnt, but can be included in future for better performancel_
 - Currenlty app fetches a bunch of data like, 100 images in a single api call. It could be improved with Endless-scrolling
 - Dependency injection can be solved with Dagger2
 - Test cases
+
+### Technical-choices
+- Retrofit with GsonConvertorFactory for effectively parsing data from API
+- Rx for network operation, because it manages threads much better and multiple network call chains are easy.
+- RecyclerView over classis listView
+- DiffUtils callback to update onlu specific views, instead of whole list item. 
