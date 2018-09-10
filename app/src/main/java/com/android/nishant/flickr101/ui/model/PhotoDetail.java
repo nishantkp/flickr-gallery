@@ -5,6 +5,11 @@
 
 package com.android.nishant.flickr101.ui.model;
 
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.Objects;
 
 /**
@@ -105,5 +110,10 @@ public class PhotoDetail {
 
     public void setWidthByHeight(String widthByHeight) {
         this.mWidthByHeight = widthByHeight;
+    }
+
+    @BindingAdapter({"app:loadImage"})
+    public static void loadImage(ImageView view, String url) {
+        Picasso.get().load(url).resize(100, 100).into(view);
     }
 }

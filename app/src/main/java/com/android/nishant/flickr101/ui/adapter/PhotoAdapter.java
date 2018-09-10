@@ -18,7 +18,6 @@ import com.android.nishant.flickr101.config.IConstants;
 import com.android.nishant.flickr101.databinding.PhotoListItemBinding;
 import com.android.nishant.flickr101.ui.dashboard.DashboardActivity;
 import com.android.nishant.flickr101.ui.model.PhotoDetail;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,10 +95,11 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         }
 
         void bind(PhotoDetail photoDetail) {
-            mBinding.photoListItemTitle.setText(photoDetail.getTitle());
-            mBinding.photoListItemSize.setText(photoDetail.getByteSize());
-            mBinding.photoListItemImageWl.setText(photoDetail.getWidthByHeight());
-            Picasso.get().load(photoDetail.getUrl()).into(mBinding.photoListItemImage);
+            mBinding.setPhoto(photoDetail);
+//            mBinding.photoListItemTitle.setText(photoDetail.getTitle());
+//            mBinding.photoListItemSize.setText(photoDetail.getByteSize());
+//            mBinding.photoListItemImageWl.setText(photoDetail.getWidthByHeight());
+//            Picasso.get().load(photoDetail.getUrl()).into(mBinding.photoListItemImage);
         }
     }
 }

@@ -25,6 +25,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:loadImage="@{photo.url}"
             tools:srcCompat="?android:attr/colorFocusedHighlight" />
 
         <TextView
@@ -38,6 +39,7 @@
             android:fontFamily="@font/noto_sans"
             android:maxLength="30"
             android:maxLines="1"
+            android:text="@{photo.title}"
             android:textColor="@color/primaryTextColor"
             android:textSize="@dimen/primary_text_size"
             android:textStyle="bold"
@@ -69,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/constraint_default_margin"
             android:fontFamily="sans-serif-light"
+            android:text="@{photo.widthByHeight}"
             android:textColor="@color/secondaryTextColor"
             android:textSize="@dimen/secondary_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/photo_list_item_image_icon"
@@ -92,6 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/constraint_default_margin"
             android:fontFamily="sans-serif-light"
+            android:text="@{photo.byteSize}"
             android:textColor="@color/secondaryTextColor"
             android:textSize="@dimen/secondary_text_size"
             app:layout_constraintBottom_toBottomOf="@+id/photo_list_item_size_icon"
