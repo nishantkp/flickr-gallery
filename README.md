@@ -14,7 +14,6 @@ To design a mobile app which shows list of images from `query` entered by user.
 - GsonConvertor _`(Custom convertor as well)`_
 
 ## API Helper
-
 _Flickr endpoint for image search,_
 <br>`https://api.flickr.com/services/rest/?api_key=949e98778755d1982f537d56236bbb42&amp`</br>
 _method,_
@@ -39,3 +38,6 @@ _Not in app at the momemnt, but can be included in future for better performance
 - Rx for network operation, because it manages threads much better and multiple network call chains are easy.
 - RecyclerView over classis listView
 - DiffUtils callback to update onlu specific views, instead of whole list item. 
+
+## UX
+<img src="/ux/splash_screen.png" width="200"> <img src="/ux/dashboard_1.png" width="200"> <img src="/ux/dashboard_2.png" width="200">
