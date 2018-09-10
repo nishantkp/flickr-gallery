@@ -18,26 +18,26 @@ import com.android.nishant.flickr101.ui.dashboard.DashboardActivity;
 public class UserSearchQuery
         implements Observable {
 
-    private String searchQuery;
-    private PropertyChangeRegistry registry = new PropertyChangeRegistry();
+    private String mSearchQuery;
+    private PropertyChangeRegistry mRegistry = new PropertyChangeRegistry();
 
     @Bindable
     public String getSearchQuery() {
-        return searchQuery;
+        return mSearchQuery;
     }
 
     public void setSearchQuery(String searchQuery) {
-        this.searchQuery = searchQuery;
-        registry.notifyChange(this, BR.searchQuery);
+        this.mSearchQuery = searchQuery;
+        mRegistry.notifyChange(this, BR.searchQuery);
     }
 
     @Override
     public void addOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-        registry.add(callback);
+        mRegistry.add(callback);
     }
 
     @Override
     public void removeOnPropertyChangedCallback(OnPropertyChangedCallback callback) {
-        registry.remove(callback);
+        mRegistry.remove(callback);
     }
 }

@@ -20,11 +20,11 @@ public class PhotoDetail {
     private String mTitle;
     private String mUrl;
     private String mId;
-    private String mWidth = "NA";
-    private String mHeight = "NA";
+    private String mWidth = "na";
+    private String mHeight = "na";
     private String mOriginalUrl;
-    private String mByteSize = "NA";
-    private String mWidthByHeight = "NA";
+    private String mByteSize = "na";
+    private String mWidthByHeight = "na";
 
     public PhotoDetail(String title, String url, String id) {
         mTitle = title;
