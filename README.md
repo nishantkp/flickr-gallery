@@ -1,5 +1,7 @@
 # flickr-gallary
 
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nishantkp/flickr-gallary/master/LICENSE)
+
 A gallary App with flicklr API
 
 ## Task Overview
@@ -41,3 +43,10 @@ _Not in app at the momemnt, but can be included in future for better performance
 
 ## UX
 <img src="/ux/splash_screen.png" width="200"> <img src="/ux/dashboard_1.png" width="200"> <img src="/ux/dashboard_2.png" width="200">
+
+## License
+```
+MIT License
+
+Copyright (c) 2018 Nishant Patel
+```
