@@ -29,7 +29,7 @@ public final class NetworkUtils {
      */
     public static String generatePhotoUrl(String farmId, String serverId, String id, String secret) {
         return "https://farm" + farmId + ".staticflickr.com/" + serverId +
-                "/" + id + "_" + secret + ".jpg";
+                "/" + id + "_" + secret + "_q.jpg";
     }
 
     /**

@@ -39,11 +39,6 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
      * @param newData New batch of data
      */
     public void updateDataSet(List<PhotoDetail> newData) {
-        if (!mPhotoDetailList.isEmpty()) {
-            mPhotoDetailList.addAll(newData);
-            notifyDataSetChanged();
-            return;
-        }
         DiffUtil.DiffResult diffResult =
                 DiffUtil.calculateDiff(new PhotoListDiffUtilsCallback(mPhotoDetailList, newData));
         mPhotoDetailList.clear();

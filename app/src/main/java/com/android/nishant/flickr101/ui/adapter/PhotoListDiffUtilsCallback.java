@@ -62,6 +62,7 @@ public final class PhotoListDiffUtilsCallback extends DiffUtil.Callback {
         if (!oldItem.getByteSize().equals(newItem.getByteSize())) {
             bundle.putString(IConstants.KEY_BYTE_SIZE, newItem.getByteSize());
         }
+        if (bundle.size() == 0) return null;
         return bundle;
     }
 }

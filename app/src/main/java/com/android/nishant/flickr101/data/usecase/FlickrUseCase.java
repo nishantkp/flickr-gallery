@@ -45,14 +45,14 @@ public final class FlickrUseCase {
     public void getUserSearchResponse(@NonNull String userQuery,
                                       @NonNull final OnTaskCompletion callback) {
         ApiUtils.getFlickerService().getDataFromQuery(userQuery)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .flatMap(new Function<FlickrObject, ObservableSource<List<PhotoDetail>>>() {
                     @Override
                     public ObservableSource<List<PhotoDetail>> apply(FlickrObject flickrObject) {
                         return getPhotoList(flickrObject.getPhotos().getPhoto());
                     }
                 })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<PhotoDetail>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -86,7 +86,7 @@ public final class FlickrUseCase {
      * @param callback task completion callback for data and error
      */
     private void getPhotoSizes(List<PhotoDetail> details, @NonNull final OnTaskCompletion callback) {
-        Observable.just(details).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        Observable.just(details)
                 .flatMapIterable(new Function<List<PhotoDetail>, Iterable<PhotoDetail>>() {
                     @Override
                     public Iterable<PhotoDetail> apply(List<PhotoDetail> details) {
@@ -107,6 +107,8 @@ public final class FlickrUseCase {
                     }
                 })
                 .toList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<List<PhotoDetail>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
