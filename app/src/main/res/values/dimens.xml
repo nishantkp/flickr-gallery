@@ -16,4 +16,5 @@
     <dimen name="constraint_default_margin">8dp</dimen>
     <dimen name="list_item_size_wl_spacing">32dp</dimen>
     <dimen name="splash_screen_heading_space">32dp</dimen>
+    <dimen name="list_item_icon_width">12dp</dimen>
 </resources>
