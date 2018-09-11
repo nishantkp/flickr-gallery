@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 
 import com.android.nishant.flickr101.data.callback.OnTaskCompletion;
 import com.android.nishant.flickr101.data.manager.DataManager;
-import com.android.nishant.flickr101.data.retrofit.ApiUtils;
+import com.android.nishant.flickr101.data.retrofit.FlickrService;
 import com.android.nishant.flickr101.ui.model.FlickrObject;
 import com.android.nishant.flickr101.ui.model.FlickrSizeQuery;
 import com.android.nishant.flickr101.ui.model.Photo;
@@ -19,6 +19,8 @@ import com.android.nishant.flickr101.utils.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -38,8 +40,11 @@ import io.reactivex.schedulers.Schedulers;
  */
 public final class FlickrUseCase {
     private List<PhotoDetail> photoDetails;
+    private FlickrService mFlickrService;
 
-    public FlickrUseCase() {
+    @Inject
+    FlickrUseCase(FlickrService flickrService) {
+        mFlickrService = flickrService;
     }
 
     /**
@@ -50,7 +55,7 @@ public final class FlickrUseCase {
      */
     public void getUserSearchResponse(@NonNull String userQuery,
                                       @NonNull final OnTaskCompletion callback) {
-        ApiUtils.getFlickerService().getDataFromQuery(userQuery)
+        mFlickrService.getDataFromQuery(userQuery)
                 .flatMap(new Function<FlickrObject, ObservableSource<List<PhotoDetail>>>() {
                     @Override
                     public ObservableSource<List<PhotoDetail>> apply(FlickrObject flickrObject) {
@@ -102,7 +107,7 @@ public final class FlickrUseCase {
                 .flatMap(new Function<PhotoDetail, ObservableSource<FlickrSizeQuery>>() {
                     @Override
                     public ObservableSource<FlickrSizeQuery> apply(PhotoDetail photoDetail) {
-                        return ApiUtils.getFlickerService().getImageSizes(photoDetail.getId())
+                        return mFlickrService.getImageSizes(photoDetail.getId())
                                 .subscribeOn(Schedulers.io());
                     }
                 })

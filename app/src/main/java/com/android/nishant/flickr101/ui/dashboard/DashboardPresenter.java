@@ -23,7 +23,7 @@ public class DashboardPresenter
 
     private DataManager mDataManager;
 
-    DashboardPresenter(DataManager dataManager) {
+    public DashboardPresenter(DataManager dataManager) {
         mDataManager = dataManager;
     }
 

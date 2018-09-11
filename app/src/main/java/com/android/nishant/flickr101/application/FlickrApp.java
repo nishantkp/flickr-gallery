@@ -8,7 +8,7 @@ package com.android.nishant.flickr101.application;
 import android.app.Activity;
 import android.app.Application;
 
-import com.android.nishant.flickr101.data.manager.DataManager;
+import com.android.nishant.flickr101.di.component.DaggerAppComponent;
 
 import javax.inject.Inject;
 
@@ -27,9 +27,7 @@ public class FlickrApp extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        // Initialize dataManager when app starts
-        DataManager.getInstance();
+        DaggerAppComponent.create().inject(this);
     }
 
     @Override
