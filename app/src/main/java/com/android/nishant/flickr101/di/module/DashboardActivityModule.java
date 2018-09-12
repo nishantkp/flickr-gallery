@@ -12,7 +12,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.android.nishant.flickr101.data.manager.DataManager;
-import com.android.nishant.flickr101.di.scope.ActivityScope;
 import com.android.nishant.flickr101.ui.adapter.PhotoAdapter;
 import com.android.nishant.flickr101.ui.dashboard.DashboardActivity;
 import com.android.nishant.flickr101.ui.dashboard.DashboardPresenter;
@@ -27,7 +26,6 @@ import dagger.Provides;
 public class DashboardActivityModule {
 
     @Provides
-    @ActivityScope
     DashboardPresenter providePresenter(DataManager dataManager, DashboardActivity activity) {
         DashboardPresenter presenter = new DashboardPresenter(dataManager);
         presenter.attachView(activity);
@@ -35,25 +33,21 @@ public class DashboardActivityModule {
     }
 
     @Provides
-    @ActivityScope
     PhotoAdapter providePhotoAdapter() {
         return new PhotoAdapter();
     }
 
     @Provides
-    @ActivityScope
     LinearLayoutManager provideLayoutManager(DashboardActivity dashboardActivity) {
         return new LinearLayoutManager(dashboardActivity);
     }
 
     @Provides
-    @ActivityScope
     DividerItemDecoration provideDividerItemDecoration(DashboardActivity dashboardActivity) {
         return new DividerItemDecoration(dashboardActivity, DividerItemDecoration.VERTICAL);
     }
 
     @Provides
-    @ActivityScope
     TextView.OnEditorActionListener provideListener(final DashboardPresenter presenter) {
         return new TextView.OnEditorActionListener() {
             @Override
