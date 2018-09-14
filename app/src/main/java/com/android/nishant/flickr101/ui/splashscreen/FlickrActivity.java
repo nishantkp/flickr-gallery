@@ -27,15 +27,12 @@ public class FlickrActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flickr);
 
         // Wait for 2 seconds for splash screen, then start DashboardActivity
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                startActivity(
-                        DashboardActivity.getStarterIntent(FlickrActivity.this)
-                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK)
-                );
-            }
+        new Handler().postDelayed(() -> {
+            // This method will be executed once the timer is over
+            startActivity(
+                    DashboardActivity.getStarterIntent(FlickrActivity.this)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK)
+            );
         }, SPLASH_TIME_OUT);
     }
 }

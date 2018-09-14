@@ -23,7 +23,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
@@ -56,12 +55,8 @@ public final class FlickrUseCase {
     public void getUserSearchResponse(@NonNull String userQuery,
                                       @NonNull final OnTaskCompletion callback) {
         mFlickrService.getDataFromQuery(userQuery)
-                .flatMap(new Function<FlickrObject, ObservableSource<List<PhotoDetail>>>() {
-                    @Override
-                    public ObservableSource<List<PhotoDetail>> apply(FlickrObject flickrObject) {
-                        return getPhotoList(flickrObject.getPhotos().getPhoto());
-                    }
-                })
+                .flatMap((Function<FlickrObject, ObservableSource<List<PhotoDetail>>>)
+                        flickrObject -> getPhotoList(flickrObject.getPhotos().getPhoto()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<PhotoDetail>>() {
@@ -98,25 +93,10 @@ public final class FlickrUseCase {
      */
     private void getPhotoSizes(List<PhotoDetail> details, @NonNull final OnTaskCompletion callback) {
         Observable.just(details)
-                .flatMapIterable(new Function<List<PhotoDetail>, Iterable<PhotoDetail>>() {
-                    @Override
-                    public Iterable<PhotoDetail> apply(List<PhotoDetail> details) {
-                        return details;
-                    }
-                })
-                .flatMap(new Function<PhotoDetail, ObservableSource<FlickrSizeQuery>>() {
-                    @Override
-                    public ObservableSource<FlickrSizeQuery> apply(PhotoDetail photoDetail) {
-                        return mFlickrService.getImageSizes(photoDetail.getId())
-                                .subscribeOn(Schedulers.io());
-                    }
-                })
-                .flatMap(new Function<FlickrSizeQuery, ObservableSource<PhotoDetail>>() {
-                    @Override
-                    public ObservableSource<PhotoDetail> apply(FlickrSizeQuery flickrSizeQuery) {
-                        return getSize(flickrSizeQuery);
-                    }
-                })
+                .flatMapIterable((Function<List<PhotoDetail>, Iterable<PhotoDetail>>) details1 -> details1)
+                .flatMap((Function<PhotoDetail, ObservableSource<FlickrSizeQuery>>) photoDetail ->
+                        mFlickrService.getImageSizes(photoDetail.getId()).subscribeOn(Schedulers.io()))
+                .flatMap((Function<FlickrSizeQuery, ObservableSource<PhotoDetail>>) this::getSize)
                 .toList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -163,31 +143,28 @@ public final class FlickrUseCase {
      * @return observable source which is subscribed on {@link Schedulers}.io()
      */
     private ObservableSource<PhotoDetail> getSize(final FlickrSizeQuery flickrSizeQuery) {
-        return Observable.create(new ObservableOnSubscribe<PhotoDetail>() {
-            @Override
-            public void subscribe(ObservableEmitter<PhotoDetail> emitter) {
-                List<Size> sizeList = flickrSizeQuery.getSizes().getSize();
-                for (Size size : sizeList) {
-                    // Original image details can be distinguished by "Original" label
-                    if (size.getLabel().equals("Original")) {
-                        String height = size.getHeight();
-                        String width = size.getWidth();
-                        String originalUrl = size.getSource();
-                        String byteSize = NetworkUtils.getByteSizeFromUrl(originalUrl);
-                        String widthByHeight = width + "W x " + height + "H";
-                        emitter.onNext(
-                                new PhotoDetail(
-                                        NetworkUtils.getImageIdFromFlickrUrl(originalUrl),
-                                        width,
-                                        height,
-                                        widthByHeight,
-                                        originalUrl,
-                                        byteSize));
-                    }
+        return Observable.create((ObservableOnSubscribe<PhotoDetail>) emitter -> {
+            List<Size> sizeList = flickrSizeQuery.getSizes().getSize();
+            for (Size size : sizeList) {
+                // Original image details can be distinguished by "Original" label
+                if (size.getLabel().equals("Original")) {
+                    String height = size.getHeight();
+                    String width = size.getWidth();
+                    String originalUrl = size.getSource();
+                    String byteSize = NetworkUtils.getByteSizeFromUrl(originalUrl);
+                    String widthByHeight = width + "W x " + height + "H";
+                    emitter.onNext(
+                            new PhotoDetail(
+                                    NetworkUtils.getImageIdFromFlickrUrl(originalUrl),
+                                    width,
+                                    height,
+                                    widthByHeight,
+                                    originalUrl,
+                                    byteSize));
                 }
-                // After every item is emitted must call onComplete() on emitter
-                emitter.onComplete();
             }
+            // After every item is emitted must call onComplete() on emitter
+            emitter.onComplete();
         }).subscribeOn(Schedulers.io());
     }
 

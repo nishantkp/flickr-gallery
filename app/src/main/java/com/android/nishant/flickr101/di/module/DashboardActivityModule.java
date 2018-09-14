@@ -49,15 +49,12 @@ public class DashboardActivityModule {
 
     @Provides
     TextView.OnEditorActionListener provideListener(final DashboardPresenter presenter) {
-        return new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null &&
-                        (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    presenter.getPhotos(v.getText().toString());
-                }
-                return false;
+        return (v, actionId, event) -> {
+            if ((event != null &&
+                    (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                presenter.getPhotos(v.getText().toString());
             }
+            return false;
         };
     }
 }
